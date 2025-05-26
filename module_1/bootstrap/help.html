@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 5 Exercises</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .sidebar {
+      background-color: #f8f9fa;
+      min-height: 100vh;
+    }
+    .badge-overlay {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Responsive Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Community Portal</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Grid Layout -->
+<div class="container">
+  <!-- Row with 3 responsive columns -->
+  <div class="row text-center mb-4">
+    <div class="col-12 col-md-6 col-lg-4">Column 1</div>
+    <div class="col-12 col-md-6 col-lg-4">Column 2</div>
+    <div class="col-12 col-md-12 col-lg-4">Column 3</div>
+  </div>
+
+  <!-- 2-Column Layout with Sidebar -->
+  <div class="row mb-4">
+    <div class="col-md-3 sidebar">Sidebar</div>
+    <div class="col-md-9">Main content area</div>
+  </div>
+
+  <!-- Flexbox Card with Justify & Align -->
+  <div class="card d-flex flex-md-row justify-content-between align-items-center p-3 mb-4">
+    <div>Card content</div>
+    <button class="btn btn-primary">Action</button>
+  </div>
+
+  <!-- Typography -->
+  <div class="mb-4">
+    <h1 class="display-1">Welcome</h1>
+    <p class="lead text-muted">Join your neighborhood's upcoming events.</p>
+    <p class="text-uppercase fw-bold">Event Announcement</p>
+  </div>
+
+  <!-- Forms -->
+  <form class="mb-4">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <div class="input-group">
+        <span class="input-group-text">@</span>
+        <input type="email" class="form-control">
+      </div>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox">
+      <label class="form-check-label">Subscribe to updates</label>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+  <!-- Login Form with Floating Labels -->
+  <form class="form-floating mb-4">
+    <input type="email" class="form-control" id="loginEmail" placeholder="Email">
+    <label for="loginEmail">Email address</label>
+  </form>
+
+  <!-- Buttons and Button Groups -->
+  <div class="mb-4">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-outline-secondary">Secondary</button>
+    <div class="btn-group mt-2">
+      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck1">Toggle 1</label>
+      <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck2">Toggle 2</label>
+    </div>
+  </div>
+
+  <!-- Nav Tabs -->
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Tab 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Tab 2</a>
+    </li>
+  </ul>
+
+  <!-- Card and Media Object -->
+  <div class="card mb-4" style="width: 18rem;">
+    <img src="avatar.jpg" class="card-img-top rounded-circle border border-primary border-3" alt="...">
+    <div class="card-body shadow-lg rounded-pill">
+      <h5 class="card-title">John Doe</h5>
+      <p class="card-text">Volunteer Coordinator</p>
+    </div>
+  </div>
+
+  <!-- Media Object Layout -->
+  <div class="d-flex align-items-start mb-4">
+    <img src="avatar.jpg" alt="User" class="me-3 rounded" style="width: 64px; height: 64px;">
+    <div>
+      <h5>Jane Doe</h5>
+      <p>Community Manager</p>
+    </div>
+  </div>
+
+  <!-- Spacing and Pricing Section -->
+  <div class="bg-light p-2 mt-4">
+    <h3 class="m-3">Basic Plan - $10</h3>
+    <p class="py-5">Includes access to all community events.</p>
+  </div>
+
+  <!-- Background and Gradient -->
+  <div class="bg-dark text-white bg-gradient p-3 mb-4">
+    <h4>Night Mode Section</h4>
+  </div>
+
+  <!-- Responsive Display Utilities -->
+  <div class="d-none d-md-block">Visible on tablets and larger</div>
+  <div class="d-lg-flex">Visible flex on desktops</div>
+
+  <!-- Positioning Utilities -->
+  <div class="position-relative mb-4">
+    <img src="event.jpg" class="img-fluid">
+    <span class="badge bg-danger badge-overlay">New</span>
+  </div>
+</div>
+
+<!-- Fixed Footer -->
+<footer class="bg-primary text-white text-center p-3 position-fixed bottom-0 w-100">
+  &copy; 2025 Local Events
+</footer>
+
+<!-- Modal Plugin -->
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch Modal</button>
+<div class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Event Info</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">Details about the selected event.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Accordion Plugin -->
+<div class="accordion mt-4" id="eventAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show">
+      <div class="accordion-body">First event details go here.</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

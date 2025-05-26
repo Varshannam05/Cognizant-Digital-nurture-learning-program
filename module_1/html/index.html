@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- JavaScript -->
+    <script src="../js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Local Community Event Portal</title>
+    <style>
+        /* Internal CSS */
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; }
+        #welcomeBanner { background-color: #007BFF; color: white; padding: 15px; text-align: center; }
+        .highlight { background-color: yellow; font-weight: bold; }
+        .gallery-img { border: 2px solid #333; width: 100px; height: 100px; margin: 5px; }
+        form { border: 1px solid #ccc; padding: 20px; background: #fff; width: 300px; }
+        .feedback-area { width: 100%; height: 80px; }
+    </style>
+    <script>
+        // Event Handlers
+        function validatePhone(input) {
+            const regex = /^[0-9]{10}$/;
+            if (!regex.test(input.value)) {
+                alert("Please enter a valid 10-digit phone number.");
+                input.focus();
+            }
+        }
+
+        function showFee(select) {
+            const fee = {
+                "Music": "$10",
+                "Art": "$15",
+                "Tech": "$20"
+            };
+            document.getElementById("feeDisplay").textContent = "Fee: " + fee[select.value];
+        }
+
+        function showConfirmation() {
+            document.getElementById("formConfirmation").textContent = "Thank you for registering!";
+        }
+
+        function enlargeImage(img) {
+            img.style.width = "200px";
+            img.style.height = "200px";
+        }
+
+        function countChars(textarea) {
+            document.getElementById("charCount").textContent = "Characters: " + textarea.value.length;
+        }
+
+        function videoReady() {
+            document.getElementById("videoMsg").textContent = "Video ready to play";
+        }
+
+        window.onbeforeunload = function () {
+            return "You have unsaved changes!";
+        };
+
+        function savePreference(select) {
+            localStorage.setItem("preferredEvent", select.value);
+        }
+
+        function loadPreference() {
+            const pref = localStorage.getItem("preferredEvent");
+            if (pref) document.getElementById("eventType").value = pref;
+        }
+
+        function clearPreferences() {
+            localStorage.clear();
+            sessionStorage.clear();
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError, { enableHighAccuracy: true });
+            } else {
+                alert("Geolocation is not supported.");
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("locationDisplay").textContent =
+                "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+        }
+
+        function showError(error) {
+            document.getElementById("locationDisplay").textContent = "Error: " + error.message;
+        }
+    </script>
+</head>
+<body onload="loadPreference()">
+
+<!-- Navigation -->
+<nav>
+    <a href="#home">Home</a> |
+    <a href="#events">Events</a> |
+    <a href="#contact">Contact</a> |
+    <a href="help.html" target="_blank">Help</a>
+</nav>
+
+<!-- Welcome Banner -->
+<div id="welcomeBanner">
+    <h1>Welcome, <span class="highlight">User!</span></h1>
+    <p>Special Offer: <span style="color:red; font-weight:bold">50% off registration!</span></p>
+</div>
+
+<!-- Image Gallery -->
+<section>
+    <h2>Past Events Gallery</h2>
+    <table>
+        <caption>Memories from Our Community Events</caption>
+        <tr>
+            <td><img src="img1.jpg" alt="Event 1" title="Event 1" class="gallery-img"></td>
+            <td><img src="img2.jpg" alt="Event 2" title="Event 2" class="gallery-img"></td>
+            <td><img src="img3.jpg" alt="Event 3" title="Event 3" class="gallery-img"></td>
+        </tr>
+        <tr>
+            <td><img src="img4.jpg" alt="Event 4" title="Event 4" class="gallery-img"></td>
+            <td><img src="img5.jpg" alt="Event 5" title="Event 5" class="gallery-img"></td>
+            <td><img src="img6.jpg" alt="Event 6" title="Event 6" class="gallery-img"></td>
+        </tr>
+    </table>
+</section>
+
+<!-- Registration Form -->
+<section>
+    <h2>Register for an Event</h2>
+    <form onsubmit="showConfirmation(); return false;">
+        <label>Name: <input type="text" name="name" placeholder="Your Name" required autofocus></label><br><br>
+        <label>Email: <input type="email" name="email" placeholder="you@example.com" required></label><br><br>
+        <label>Date: <input type="date" name="date" required></label><br><br>
+        <label>Event Type:
+            <select id="eventType" onchange="showFee(this); savePreference(this);">
+                <option value="">Select</option>
+                <option value="Music">Music</option>
+                <option value="Art">Art</option>
+                <option value="Tech">Tech</option>
+            </select>
+        </label><br>
+        <span id="feeDisplay"></span><br><br>
+        <label>Message:<br>
+            <textarea class="feedback-area" onkeyup="countChars(this)"></textarea>
+        </label><br>
+        <span id="charCount"></span><br><br>
+        <label>Phone: <input type="text" onblur="validatePhone(this)"></label><br><br>
+        <button type="submit">Submit</button>
+        <output id="formConfirmation"></output>
+    </form>
+    <button onclick="clearPreferences()">Clear Preferences</button>
+</section>
+
+<!-- Video Invite -->
+<section>
+    <h2>Event Promo</h2>
+    <video width="320" height="240" controls oncanplay="videoReady()">
+        <source src="promo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p id="videoMsg"></p>
+</section>
+
+<!-- Geolocation -->
+<section>
+    <h2>Find Nearby Events</h2>
+    <button onclick="getLocation()">Find Nearby Events</button>
+    <p id="locationDisplay"></p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Local Community Events. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
